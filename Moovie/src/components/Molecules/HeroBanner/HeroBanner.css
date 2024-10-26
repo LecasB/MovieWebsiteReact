@@ -1,0 +1,32 @@
+.herobanner {
+  height: 35em;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.hero-details {
+  padding: 0px 40px;
+}
+
+.hero-title {
+  margin: 0;
+  color: white;
+  font-size: 2.5em;
+}
+
+.hero-desc {
+  color: white;
+  font-size: 0.75;
+}
+
+@media (max-width: 650px) {
+  .herobanner {
+    height: 20em;
+  }
+}

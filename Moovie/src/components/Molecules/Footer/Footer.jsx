@@ -1,6 +1,7 @@
 import AppLogo from "../../Atoms/AppLogo/AppLogo";
 import Button from "../../Atoms/Button/Button";
 import MenuItems from "../../Atoms/MenuItems/MenuItems";
+import "./Footer.css";
 
 const Footer = () => {
   return (

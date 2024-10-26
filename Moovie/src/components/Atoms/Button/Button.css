@@ -1,0 +1,8 @@
+button {
+  background: #797979;
+  border-radius: 3px;
+  border: 1px solid black;
+  color: white;
+  height: 2.5em;
+  width: 8em;
+}

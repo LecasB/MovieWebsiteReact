@@ -7,7 +7,9 @@
     width: 15em; /* Scale down on smaller screens */
   }
 }
-
+.imgLink {
+  font-size: 1em;
+}
 .logodiv {
   min-width: 50%;
   display: flex;
