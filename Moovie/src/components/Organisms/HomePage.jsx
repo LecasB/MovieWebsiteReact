@@ -1,12 +1,13 @@
+import HeroBanner from "../Molecules/HeroBanner/HeroBanner";
+import LastReviews from "../Molecules/LastReviews/LastReviews";
 import Layout from "../Molecules/Layout/Layout";
 
 const HomePage = () => {
   return (
-    <>
-      <Layout>
-        <p>This is Home Page</p>
-      </Layout>
-    </>
+    <Layout>
+      <HeroBanner />
+      <LastReviews />
+    </Layout>
   );
 };
 

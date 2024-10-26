@@ -1,12 +1,13 @@
 import Layout from "../Molecules/Layout/Layout";
+import FormSubmit from "../Molecules/Form/FormSubmit";
+import LastReviews from "../Molecules/LastReviews/LastReviews";
 
 const ReviewsPage = () => {
   return (
-    <>
-      <Layout>
-        <p>This is Reviews Page</p>
-      </Layout>
-    </>
+    <Layout>
+      <FormSubmit />
+      <LastReviews />
+    </Layout>
   );
 };
 
