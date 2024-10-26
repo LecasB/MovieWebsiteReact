@@ -1,10 +1,14 @@
 import useFetch from "../../../hooks/Fetch/useFetch";
 import { Link } from "react-router-dom";
+import FavoriteButton from "../FavouriteButton/FavouriteButton";
 
 const MovieFav = ({ id }) => {
   const [data, isLoading, errorMessage] = useFetch(
     `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?id=${id}`
   );
+
+  if (isLoading) return <p>Loading...</p>;
+  if (errorMessage) return <p>Error: {errorMessage}</p>;
 
   return (
     <>
@@ -15,7 +19,7 @@ const MovieFav = ({ id }) => {
           </Link>
           <p>{data.genres}</p> {/* Assuming genres is an array */}
           <h3>{data.title}</h3>
-          <img src={data.posterUrl} onClick={() => toggleFav(data.id)} />
+          <FavoriteButton id={data.id} />
         </div>
       )}
     </>

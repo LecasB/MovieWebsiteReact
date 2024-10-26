@@ -1,0 +1,16 @@
+.app-logo {
+  transform: scale(1); /* Default scale */
+}
+
+@media (max-width: 650px) {
+  .app-logo {
+    width: 15em; /* Scale down on smaller screens */
+  }
+}
+
+.logodiv {
+  min-width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
