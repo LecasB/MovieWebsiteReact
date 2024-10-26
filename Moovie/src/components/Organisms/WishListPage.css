@@ -1,4 +1,4 @@
-.movies {
+.wishItems {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4em;

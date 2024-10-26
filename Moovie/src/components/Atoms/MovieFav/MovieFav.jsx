@@ -13,13 +13,19 @@ const MovieFav = ({ id }) => {
   return (
     <>
       {data && (
-        <div key={data.id}>
+        <div className="movie">
           <Link to={`/movies/${data.id}`}>
-            <img src={data.posterUrl} alt={data.title} />
+            <img
+              className="movie-image"
+              src={data.posterUrl}
+              alt={data.title}
+            />
           </Link>
-          <p>{data.genres}</p> {/* Assuming genres is an array */}
-          <h3>{data.title}</h3>
-          <FavoriteButton id={data.id} />
+          <div className="genre-fav">
+            <p>{data.genres}</p>
+            <FavoriteButton id={data.id} />
+          </div>
+          <h3 className="movie-title">{data.title}</h3>
         </div>
       )}
     </>

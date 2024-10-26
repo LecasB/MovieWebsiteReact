@@ -27,13 +27,13 @@ const MenuItems = () => {
     <>
       {!isMobile ? (
         <ul className="menu-items">
-          <li>
+          <li className="list-item">
             <Link to="/movies">Movies</Link>
           </li>
-          <li>
+          <li className="list-item">
             <Link to="/wishList">WishList</Link>
           </li>
-          <li>
+          <li className="list-item">
             <Link to="/reviews">Reviews</Link>
           </li>
         </ul>

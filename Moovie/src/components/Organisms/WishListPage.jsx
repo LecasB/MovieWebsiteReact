@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../Molecules/Layout/Layout";
 import MovieFav from "../Atoms/MovieFav/MovieFav";
+import "./WishListPage.css";
 
 const WishListPage = () => {
   const [sessionData, setSessionData] = useState([]);
@@ -24,11 +25,14 @@ const WishListPage = () => {
 
   return (
     <Layout>
-      {sessionData.length > 0 ? (
-        sessionData.map((movie, index) => <MovieFav id={movie} />)
-      ) : (
-        <h1>No Favourite Movies.</h1> // Show fallback message if no movies
-      )}
+      <h1>Favourites:</h1>
+      <div className="wishItems">
+        {sessionData.length > 0 ? (
+          sessionData.map((movie, index) => <MovieFav key={index} id={movie} />)
+        ) : (
+          <h1>No Favourite Movies.</h1> // Show fallback message if no movies
+        )}
+      </div>
     </Layout>
   );
 };

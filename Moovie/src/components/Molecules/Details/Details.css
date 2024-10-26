@@ -1,0 +1,29 @@
+.director-actors {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.details {
+  display: flex;
+  width: 100%;
+}
+
+.title-fav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.movie-poster-div {
+  width: 15%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-poster {
+  height: 20em;
+  width: 15em;
+  border-radius: 10px;
+}

@@ -1,0 +1,18 @@
+.relatedMovies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.title-desc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.seeall {
+  font-size: 1.2em;
+  text-decoration: underline;
+}
