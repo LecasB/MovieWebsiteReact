@@ -1,0 +1,24 @@
+.review-card {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.title-rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.review-rating {
+  color: #000000;
+  padding: 0.5em;
+  border: solid 1px black;
+  background-color: #dbdbdb;
+}
+
+.review-author {
+  font-style: italic;
+  color: gray;
+}

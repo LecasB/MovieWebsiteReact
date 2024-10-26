@@ -1,0 +1,11 @@
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  justify-content: space-around;
+}
+
+.movie-image {
+  height: 15em;
+  width: 10.5em;
+}

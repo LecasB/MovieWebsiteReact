@@ -1,4 +1,5 @@
 import useFetch from "../../../hooks/Fetch/useFetch";
+import "./Genres.css";
 
 const Genres = ({ onChange }) => {
   const [data, isLoading, errorMessage] = useFetch(
@@ -8,7 +9,8 @@ const Genres = ({ onChange }) => {
   return (
     <>
       {data && (
-        <div>
+        <div className="genres">
+          <h2>Category</h2>
           {data.map((genre, index) => (
             <div key={index}>
               <input

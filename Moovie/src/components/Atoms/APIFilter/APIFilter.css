@@ -1,0 +1,9 @@
+.movies-page {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+}
+
+.sortby-movies {
+  width: 85%;
+}

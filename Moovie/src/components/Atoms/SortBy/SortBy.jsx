@@ -1,10 +1,15 @@
+import "./SortBy.css";
+
 const SortBy = ({ onChange }) => {
   return (
-    <select onChange={onChange}>
-      <option value="relevance">relevance</option>
-      <option value="name">name</option>
-      <option value="year">year</option>
-    </select>
+    <div className="title-genres">
+      <h1>All Movies</h1>
+      <select onChange={onChange}>
+        <option value="relevance">relevance</option>
+        <option value="name">name</option>
+        <option value="year">year</option>
+      </select>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
+// Movies.js
+import React from "react";
 import useFetch from "../../../hooks/Fetch/useFetch";
-import { Link } from "react-router-dom";
-import FavoriteButton from "../../Atoms/FavouriteButton/FavouriteButton";
+import Movie from "../Movie/Movie";
+import "./Movies.css";
 
 const Movies = ({ url }) => {
   // Use the useFetch hook to get the data based on the provided URL
@@ -15,17 +17,18 @@ const Movies = ({ url }) => {
 
   return (
     <>
-      {data &&
-        data.map((item) => (
-          <div key={item.id}>
-            <Link to={`/movies/${item.id}`}>
-              <img src={item.posterUrl} alt={item.title} />
-            </Link>
-            <p>{item.genres}</p> {/* Assuming genres is an array */}
-            <h3>{item.title}</h3>
-            <FavoriteButton id={item.id} /> {/* Use FavoriteButton */}
-          </div>
-        ))}
+      <div className="movies">
+        {data &&
+          data.map((item) => (
+            <Movie
+              key={item.id}
+              id={item.id}
+              posterUrl={item.posterUrl}
+              title={item.title}
+              genres={item.genres}
+            />
+          ))}
+      </div>
     </>
   );
 };

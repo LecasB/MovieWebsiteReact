@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Genres from "../../Molecules/Genres/Genres";
 import SortBy from "../SortBy/SortBy";
 import Movies from "../../Molecules/Movies/Movies";
+import "./APIFilter.css";
 
 const APIFilter = () => {
   const [selectedSort, setSelectedSort] = useState("relevance"); // Default sort option
@@ -39,10 +40,12 @@ const APIFilter = () => {
   }, [selectedGenres, selectedSort]); // Update the link when genres or sort option changes
 
   return (
-    <div>
-      <SortBy onChange={handleSortChange} /> {/* Pass the onChange handler */}
+    <div className="movies-page">
       <Genres onChange={handleGenreChange} /> {/* Pass the onChange handler */}
-      <Movies url={apiLink} /> {/* Pass the apiLink to Movies component */}
+      <div className="sortby-movies">
+        <SortBy onChange={handleSortChange} /> {/* Pass the onChange handler */}
+        <Movies url={apiLink} /> {/* Pass the apiLink to Movies component */}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,4 @@
+.title-genres {
+  display: flex;
+  justify-content: space-between;
+}
