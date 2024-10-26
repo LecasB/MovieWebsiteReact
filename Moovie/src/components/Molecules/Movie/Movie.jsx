@@ -8,9 +8,11 @@ const Movie = ({ id, posterUrl, title, genres }) => (
     <Link to={`/movies/${id}`}>
       <img className="movie-image" src={posterUrl} alt={title} />
     </Link>
-    <p>{genres}</p>
-    <h3>{title}</h3>
-    <FavoriteButton id={id} />
+    <div className="genre-fav">
+      <p>{genres}</p>
+      <FavoriteButton id={id} />
+    </div>
+    <h3 className="movie-title">{title}</h3>
   </div>
 );
 

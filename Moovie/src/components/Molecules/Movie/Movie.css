@@ -2,3 +2,15 @@
   background-color: rgb(206, 206, 206);
   padding: 0.3em;
 }
+
+.genre-fav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.movie-title {
+  margin: 0px 0px 10px 0px;
+  padding: 0px 0px 0px 10px;
+}
