@@ -9,3 +9,9 @@
 .input-form-review {
   height: 2em;
 }
+
+@media (max-width: 900px) {
+  .form-review {
+    width: 90%;
+  }
+}

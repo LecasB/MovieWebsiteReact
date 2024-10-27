@@ -25,13 +25,12 @@ const WishListPage = () => {
 
   return (
     <Layout>
-      <h1>Favourites:</h1>
+      <h1 style={{ padding: "0px 0px 0px 20px" }}>Favourites:</h1>
       <div className="wishItems">
-        {sessionData.length > 0 ? (
-          sessionData.map((movie, index) => <MovieFav key={index} id={movie} />)
-        ) : (
-          <h1>No Favourite Movies.</h1> // Show fallback message if no movies
-        )}
+        {sessionData.length > 0 &&
+          sessionData.map((movie, index) => (
+            <MovieFav key={index} id={movie} />
+          ))}
       </div>
     </Layout>
   );

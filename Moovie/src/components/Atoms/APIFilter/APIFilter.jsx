@@ -29,15 +29,13 @@ const APIFilter = () => {
   useEffect(() => {
     let link;
     if (selectedGenres.length === 0) {
-      // If no genres are selected, use the default link
-      link = `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?sortBy=${selectedSort}`; // Update to use selectedSort
+      link = `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?sortBy=${selectedSort}`;
     } else {
-      // Construct the link with selected genres
-      const genresParam = JSON.stringify(selectedGenres); // Convert selected genres to JSON
+      const genresParam = JSON.stringify(selectedGenres);
       link = `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?category=${genresParam}&sortBy=${selectedSort}`;
     }
-    setApiLink(link); // Update the API link state
-  }, [selectedGenres, selectedSort]); // Update the link when genres or sort option changes
+    setApiLink(link);
+  }, [selectedGenres, selectedSort]);
 
   return (
     <div className="movies-page">

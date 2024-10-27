@@ -19,7 +19,7 @@ const Details = () => {
               alt={data.title}
             />
           </div>
-          <div>
+          <div className="text-section">
             <div className="title-fav">
               <h2>{data.title}</h2>
               <FavoriteButton id={data.id} />

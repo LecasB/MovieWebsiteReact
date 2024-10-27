@@ -7,3 +7,13 @@
 .sortby-movies {
   width: 85%;
 }
+
+@media (max-width: 650px) {
+  .movies-page {
+    flex-direction: column;
+  }
+  .sortby-movies {
+    margin: 0 auto;
+    padding: 20px;
+  }
+}

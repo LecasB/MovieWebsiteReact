@@ -4,3 +4,12 @@
   gap: 0.4em;
   justify-content: space-around;
 }
+
+@media (max-width: 650px) {
+  .movies {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
