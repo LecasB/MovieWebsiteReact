@@ -3,3 +3,10 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+@media (max-width: 650px) {
+  .reviews {
+    flex-direction: column;
+    align-items: center;
+  }
+}
