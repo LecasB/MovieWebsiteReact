@@ -2,26 +2,27 @@ import { Link } from "react-router-dom";
 import "./MenuItems.css";
 import Burguer from "../../../assets/burger.svg";
 import { useState, useEffect } from "react";
+import PopUpMenu from "../../Molecules/PopUpMenu/PopUpMenu";
 
 const MenuItems = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [showPopUpMenu, setShowPopUpMenu] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 700);
     };
 
-    // Set the initial value
     handleResize();
 
-    // Add event listener for window resize
     window.addEventListener("resize", handleResize);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Toggle the popup menu visibility
+  const handleBurgerClick = () => {
+    setShowPopUpMenu(!showPopUpMenu);
+  };
 
   return (
     <>
@@ -38,7 +39,10 @@ const MenuItems = () => {
           </li>
         </ul>
       ) : (
-        <img src={Burguer} />
+        <>
+          <img src={Burguer} onClick={handleBurgerClick} alt="Menu" />
+          <PopUpMenu isShowing={showPopUpMenu} onClose={handleBurgerClick} />
+        </>
       )}
     </>
   );
