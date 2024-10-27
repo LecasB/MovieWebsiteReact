@@ -16,10 +16,10 @@ const WishListPage = () => {
         const parsedData = JSON.parse(data); // Parse the JSON string into an array
         setSessionData(parsedData); // Update state with retrieved data
       } catch (error) {
-        setSessionData(["Invalid data format."]); // Handle parsing errors
+        alert("Error Loading Movies"); // Reset to an empty array on error
       }
     } else {
-      setSessionData(["No Favourite Movies."]); // Fallback message
+      setSessionData([]); // No data found, reset to an empty array
     }
   }, []); // Empty dependency array means this runs once on mount
 
@@ -27,10 +27,11 @@ const WishListPage = () => {
     <Layout>
       <h1 style={{ padding: "0px 0px 0px 20px" }}>Favourites:</h1>
       <div className="wishItems">
-        {sessionData.length > 0 &&
-          sessionData.map((movie, index) => (
-            <MovieFav key={index} id={movie} />
-          ))}
+        {sessionData && sessionData.length > 0 ? (
+          sessionData.map((movie, index) => <MovieFav key={index} id={movie} />)
+        ) : (
+          <h1>No Movies Found</h1>
+        )}
       </div>
     </Layout>
   );
