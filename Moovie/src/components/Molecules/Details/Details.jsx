@@ -24,7 +24,7 @@ const Details = () => {
               <h2>{data.title}</h2>
               <FavoriteButton id={data.id} />
             </div>
-            <p>{data.summary}</p>
+            <p>Description: {data.summary}</p>
             <p>Year:{data.year}</p>
             <p>Duration: {data.runtime}</p>
             <p>Category: {data.genres}</p>

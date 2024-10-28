@@ -10,8 +10,7 @@
 }
 
 .text-section {
-  width: 60%;
-  padding: 0px 20px 0px 0px;
+  padding: 20px;
 }
 
 .title-fav {
@@ -21,16 +20,16 @@
 }
 
 .movie-poster-div {
-  width: 40%;
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
 .movie-poster {
-  height: 20em;
-  width: 15em;
+  height: 25em;
+  width: 20em;
   border-radius: 10px;
+  padding: 20px;
 }
 
 @media (max-width: 650px) {
