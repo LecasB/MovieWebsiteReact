@@ -1,12 +1,14 @@
 .reviews {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
   .reviews {
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
   }
 }
