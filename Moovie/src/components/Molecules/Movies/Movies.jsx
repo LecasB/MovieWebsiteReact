@@ -18,7 +18,7 @@ const Movies = ({ url }) => {
   return (
     <>
       <div className="movies">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((item) => (
             <Movie
               key={item.id}
@@ -27,7 +27,11 @@ const Movies = ({ url }) => {
               title={item.title}
               genres={item.genres}
             />
-          ))}
+          ))
+        ) : (
+          <h3>There is No Movies in this category</h3>
+        )}
+        {}
       </div>
     </>
   );
