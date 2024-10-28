@@ -2,9 +2,11 @@ import useFetch from "../../../hooks/Fetch/useFetch";
 import Review from "../../Atoms/Review/Review";
 import "./LastReviews.css";
 
-const LastReviews = () => {
+const LastReviews = ({ id }) => {
   const [data, isLoading, errorMessage] = useFetch(
-    "https://moviesfunctionapp.azurewebsites.net/api/GetReviews"
+    id
+      ? `https://moviesfunctionapp.azurewebsites.net/api/GetReviews?id=${id}`
+      : "https://moviesfunctionapp.azurewebsites.net/api/GetReviews"
   );
 
   console.log(data);

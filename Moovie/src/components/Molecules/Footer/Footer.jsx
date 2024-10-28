@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
       <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
         <p style={{ fontFamily: "monospace", fontStyle: "italic" }}>
-          @2024 M"F"ovies, Inc. All Rights Reserved.{" "}
+          @2024 M"F"ovies, Inc. All Rights Reserved.
         </p>
       </div>
     </footer>
