@@ -11,17 +11,22 @@ const Genres = ({ onChange }) => {
       {data && (
         <div className="genres">
           <h2>Category</h2>
-          {data.map((genre, index) => (
-            <div key={index}>
-              <input
-                type="checkbox"
-                id={`${index}`}
-                value={genre}
-                onChange={onChange}
-              />
-              <label htmlFor={`${index}`}>{genre}</label>
-            </div>
-          ))}
+          <div className="genresOp">
+            {data.map((genre, index) => (
+              <div key={index} className="divGenre">
+                <input
+                  type="checkbox"
+                  id={`${index}`}
+                  value={genre}
+                  onChange={onChange}
+                  className="checkStyle"
+                />
+                <label className="genreLabel" htmlFor={`${index}`}>
+                  {genre}
+                </label>
+              </div>
+            ))}
+          </div>
         </div>
       )}
       {isLoading && <p>Loading...</p>}
