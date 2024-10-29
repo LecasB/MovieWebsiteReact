@@ -5,6 +5,12 @@
   padding: 0px 20px 0px 0px;
 }
 
+.selectStyle {
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+
 @media (max-width: 650px) {
   .title-genres {
     padding: 0px;

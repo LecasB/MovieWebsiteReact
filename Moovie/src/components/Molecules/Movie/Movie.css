@@ -1,6 +1,7 @@
 .movie {
   background-color: rgb(206, 206, 206);
   padding: 0.5em;
+  border: 1px solid rgb(156, 155, 155);
 }
 
 .genre-fav {
@@ -23,6 +24,6 @@
 @media (max-width: 650px) {
   .movie-image {
     height: 15em;
-    width: 10.5em;
+    width: 12.5em;
   }
 }
