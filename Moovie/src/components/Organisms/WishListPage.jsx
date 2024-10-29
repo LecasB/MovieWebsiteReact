@@ -1,7 +1,7 @@
 // WishListPage.js
 import React, { useEffect, useState } from "react";
 import Layout from "../Molecules/Layout/Layout";
-import Movie from "../Molecules/Movie/Movie"; // Adjust path as necessary
+import Movie from "../Molecules/Movie/Movie";
 import "./WishListPage.css";
 
 const WishListPage = () => {

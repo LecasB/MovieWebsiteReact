@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import "./PopUpMenu.css";
 import X from "../../../assets/X.png";
+import Sound from "../../Atoms/Sound/Sound";
+import noid from "../../../assets/noid.mp3";
+import chroma from "../../../assets/chroma.mp3";
+import wasDead from "../../../assets/wasDead.mp3";
 
 const PopUpMenu = ({ isShowing, onClose }) => {
+  const soundFiles = [noid, chroma, wasDead];
   return (
     <>
       {isShowing && (
@@ -15,6 +20,7 @@ const PopUpMenu = ({ isShowing, onClose }) => {
             <Link to="/reviews">Reviews</Link>
             <Link to="/wishList">WishList</Link>
             <Link to="/movies">Movies</Link>
+            <Sound soundFile={soundFiles} />
           </div>
         </div>
       )}

@@ -5,13 +5,11 @@ import Movie from "../Movie/Movie";
 import "./Movies.css";
 
 const Movies = ({ url }) => {
-  // Use the useFetch hook to get the data based on the provided URL
   const [data, isLoading, errorMessage] = useFetch(
     url ||
       "https://moviesfunctionapp.azurewebsites.net/api/GetMovies?sortBy=relevance"
   );
 
-  // Handle loading and error states
   if (isLoading) return <div>Loading...</div>;
   if (errorMessage) return <div>Error: {errorMessage}</div>;
 

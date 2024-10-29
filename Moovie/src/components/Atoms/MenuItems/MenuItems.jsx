@@ -19,7 +19,6 @@ const MenuItems = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Toggle the popup menu visibility
   const handleBurgerClick = () => {
     setShowPopUpMenu(!showPopUpMenu);
   };

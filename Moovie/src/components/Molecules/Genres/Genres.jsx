@@ -17,7 +17,7 @@ const Genres = ({ onChange }) => {
                 type="checkbox"
                 id={`${index}`}
                 value={genre}
-                onChange={onChange} // Call the passed onChange handler
+                onChange={onChange}
               />
               <label htmlFor={`${index}`}>{genre}</label>
             </div>
