@@ -1,26 +1,34 @@
 import useFetch from "../../../hooks/Fetch/useFetch";
 import "./FormSubmit.css";
+import { useState } from "react";
 
 const FormSubmit = () => {
   const [data, isLoading, errorMessage] = useFetch(
     "https://moviesfunctionapp.azurewebsites.net/api/GetMovies"
   );
 
+  const [rating, setRating] = useState("");
+
+  const handleRatingChange = (e) => {
+    const value = e.target.value;
+    if (value === "" || (value >= 1 && value <= 5)) {
+      setRating(value);
+    }
+  };
+
   const formHandle = (e) => {
     e.preventDefault();
 
-    // Get form data
     const reviewData = {
       title: e.target.reviewTitle.value,
       text: e.target.reviewText.value,
       movie: e.target.moviesSelect.value,
       email: e.target.email.value,
-      rating: e.target.rating.value,
+      rating,
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
     };
 
-    // Send data to API
     fetch("https://moviesfunctionapp.azurewebsites.net/api/SubmitReview", {
       method: "POST",
       headers: {
@@ -35,10 +43,10 @@ const FormSubmit = () => {
         return response.json();
       })
       .then((data) => {
-        alert("Review submitted successfully:", data);
+        alert("Review submitted successfully");
       })
       .catch((error) => {
-        alert("Error:", error);
+        alert("Error:", error.message);
       });
   };
 
@@ -47,13 +55,17 @@ const FormSubmit = () => {
       <form onSubmit={formHandle}>
         <div className="form-review">
           <h2>Submit Review</h2>
+
           <label htmlFor="reviewTitle">Title:</label>
           <input
             className="input-form-review"
             type="text"
             id="reviewTitle"
-            name="title"
+            name="reviewTitle"
             placeholder="Enter the title of your review"
+            required
+            minLength={5}
+            maxLength={50}
           />
 
           <label htmlFor="reviewText">Review:</label>
@@ -62,12 +74,19 @@ const FormSubmit = () => {
             id="reviewText"
             name="reviewText"
             placeholder="Write your review here"
+            required
+            minLength={20}
+            maxLength={500}
           />
 
-          <label htmlFor="carSelect">Select a Movie:</label>
-          <select name="movies" id="moviesSelect">
+          <label htmlFor="moviesSelect">Select a Movie:</label>
+          <select name="moviesSelect" id="moviesSelect" required>
             {data &&
-              data.map((item, key) => <option key={key}>{item.title}</option>)}
+              data.map((item, key) => (
+                <option key={key} value={item.title}>
+                  {item.title}
+                </option>
+              ))}
           </select>
 
           <label htmlFor="rating">Rating (1 to 5)</label>
@@ -77,6 +96,11 @@ const FormSubmit = () => {
             id="rating"
             name="rating"
             placeholder="Enter rating"
+            required
+            min={1}
+            max={5}
+            value={rating}
+            onChange={handleRatingChange}
           />
 
           <label htmlFor="firstName">First Name:</label>
@@ -86,6 +110,9 @@ const FormSubmit = () => {
             type="text"
             id="firstName"
             name="firstName"
+            required
+            minLength={2}
+            maxLength={30}
           />
 
           <label htmlFor="lastName">Last Name:</label>
@@ -95,6 +122,9 @@ const FormSubmit = () => {
             type="text"
             id="lastName"
             name="lastName"
+            required
+            minLength={2}
+            maxLength={30}
           />
 
           <label htmlFor="email">Email:</label>
@@ -104,6 +134,7 @@ const FormSubmit = () => {
             id="email"
             name="email"
             placeholder="Enter your email"
+            required
           />
 
           <button type="submit">Submit</button>
