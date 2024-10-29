@@ -4,31 +4,35 @@ import FavoriteButton from "../../Atoms/FavouriteButton/FavouriteButton";
 import useFetch from "../../../hooks/Fetch/useFetch";
 import "./Movie.css";
 
-const Movie = ({ id, posterUrl = false, title = false, genres = false }) => {
-  const shouldFetch = !title || !posterUrl || !genres;
-  const [data, isLoading, errorMessage] = shouldFetch
-    ? useFetch(
-        `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?id=${id}`
-      )
-    : [{}, false, null];
+const Movie = ({
+  id,
+  posterUrl = false,
+  title = false,
+  genres = false,
+  refresh = null,
+}) => {
+  if (!posterUrl || !title || !genres) {
+    const [data] = useFetch(
+      `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?id=${id}`
+    );
 
-  const movieTitle = title || data?.title;
-  const moviePosterUrl = posterUrl || data?.posterUrl;
-  const movieGenres = genres || data?.genres;
-
-  if (isLoading) return <p>Loading...</p>;
-  if (errorMessage) return <p>Error: {errorMessage}</p>;
+    if (data) {
+      posterUrl = data.posterUrl;
+      title = data.title;
+      genres = data.genres;
+    }
+  }
 
   return (
     <div className="movie">
       <Link to={`/movies/${id}`}>
-        <img className="movie-image" src={moviePosterUrl} alt={movieTitle} />
+        <img className="movie-image" src={posterUrl} alt={title} />
       </Link>
       <div className="genre-fav">
-        <p>{movieGenres}</p>
-        <FavoriteButton id={id} />
+        <p>{genres}</p>
+        <FavoriteButton id={id} refresh={refresh} />
       </div>
-      <h3 className="movie-title">{movieTitle}</h3>
+      <h3 className="movie-title">{title}</h3>
     </div>
   );
 };

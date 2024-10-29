@@ -5,30 +5,24 @@ import Movie from "../Molecules/Movie/Movie";
 import "./WishListPage.css";
 
 const WishListPage = () => {
-  const [sessionData, setSessionData] = useState([]);
+  const [sessionData, setSessionData] = useState(
+    JSON.parse(sessionStorage.getItem("favoriteMovies")) || []
+  );
 
-  useEffect(() => {
-    const data = sessionStorage.getItem("favoriteMovies");
-
-    if (data) {
-      try {
-        const parsedData = JSON.parse(data);
-        setSessionData(parsedData);
-      } catch (error) {
-        alert("Error Loading Movies");
-        setSessionData([]);
-      }
-    } else {
-      setSessionData([]);
-    }
-  }, []);
+  const refresh = () => {
+    const favorites =
+      JSON.parse(sessionStorage.getItem("favoriteMovies")) || [];
+    setSessionData(favorites);
+  };
 
   return (
     <Layout>
-      <h1 style={{ padding: "0px 0px 0px 20px" }}>Favourites:</h1>
+      <h1 style={{ padding: "0px 0px 0px 20px" }}>Favorites:</h1>
       <div className="wishItems">
         {sessionData && sessionData.length > 0 ? (
-          sessionData.map((movie, index) => <Movie key={index} id={movie} />)
+          sessionData.map((movieId, index) => (
+            <Movie key={index} id={movieId} refresh={refresh} />
+          ))
         ) : (
           <h1>No Movies Found</h1>
         )}
