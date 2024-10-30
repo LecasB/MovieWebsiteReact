@@ -10,11 +10,11 @@ const Movies = ({ url }) => {
       "https://moviesfunctionapp.azurewebsites.net/api/GetMovies?sortBy=relevance"
   );
 
-  if (isLoading) return <div>Loading...</div>;
   if (errorMessage) return <div>Error: {errorMessage}</div>;
 
   return (
     <>
+      {isLoading && <h3>Loading Movies 🎞</h3>}
       <div className="movies">
         {data && data.length > 0 ? (
           data.map((item) => (
@@ -29,7 +29,6 @@ const Movies = ({ url }) => {
         ) : (
           <h3>There is No Movies in this category</h3>
         )}
-        {}
       </div>
     </>
   );

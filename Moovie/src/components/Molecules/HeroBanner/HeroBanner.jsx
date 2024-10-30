@@ -9,20 +9,23 @@ const HeroBanner = () => {
   );
 
   return (
-    data && (
-      <div
-        style={{ backgroundImage: `url(${data.image})` }}
-        className="herobanner"
-      >
-        <div className="hero-details">
-          <h2 className="hero-title">{data.title}</h2>
-          <p className="hero-desc">{data.description}</p>
-          <Link to={`/movies/${data.id}`}>
-            <Button text={"See Details"} />
-          </Link>
+    <>
+      {isLoading && <h3>Loading: HeroBanner</h3>}
+      {data && (
+        <div
+          style={{ backgroundImage: `url(${data.image})` }}
+          className="herobanner"
+        >
+          <div className="hero-details">
+            <h2 className="hero-title">{data.title}</h2>
+            <p className="hero-desc">{data.description}</p>
+            <Link to={`/movies/${data.id}`}>
+              <Button text={"See Details"} />
+            </Link>
+          </div>
         </div>
-      </div>
-    )
+      )}
+    </>
   );
 };
 

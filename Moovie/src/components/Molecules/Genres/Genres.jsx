@@ -8,6 +8,7 @@ const Genres = ({ onChange }) => {
 
   return (
     <>
+      {isLoading && <h3>Loading Genres 🎭</h3>}
       {data && (
         <div className="genres">
           <h2>Category</h2>
@@ -29,7 +30,6 @@ const Genres = ({ onChange }) => {
           </div>
         </div>
       )}
-      {isLoading && <p>Loading...</p>}
       {errorMessage && <p>Error: {errorMessage}</p>}
     </>
   );
