@@ -16,7 +16,9 @@ const LastReviews = ({ id }) => {
       {isLoading && <h3>Loading: LastReviews</h3>}
       <h2 style={{ padding: "0px 0px 0px 20px" }}>Last Reviews:</h2>
       <div className="reviews">
+        {data && data.success === false && <h3>There is No Reviews</h3>}
         {data &&
+          data.length > 0 &&
           data.map((item, key) => (
             <Review
               key={key}
