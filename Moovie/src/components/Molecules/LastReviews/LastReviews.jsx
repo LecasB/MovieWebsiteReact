@@ -5,7 +5,7 @@ import "./LastReviews.css";
 const LastReviews = ({ id }) => {
   const [data, isLoading, errorMessage] = useFetch(
     id
-      ? `https://moviesfunctionapp.azurewebsites.net/api/GetReviews?id=${id}`
+      ? `https://brightflixapii.vercel.app/api/v1/GetReviewById?id=${id}`
       : "https://brightflixapii.vercel.app/api/v1/GetReviews"
   );
 
@@ -27,6 +27,7 @@ const LastReviews = ({ id }) => {
               firstName={item.first_name}
               lastName={item.last_name}
               rating={item.rating}
+              id={item.id}
             />
           ))}
       </div>
