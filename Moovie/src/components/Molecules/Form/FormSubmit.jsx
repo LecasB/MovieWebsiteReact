@@ -8,6 +8,8 @@ const FormSubmit = () => {
   );
 
   const [rating, setRating] = useState("");
+  const [selectedMovieId, setSelectedMovieId] = useState("");
+  const [selectedMovieTitle, setSelectedMovieTitle] = useState("");
 
   const handleRatingChange = (e) => {
     const value = e.target.value;
@@ -22,14 +24,15 @@ const FormSubmit = () => {
     const reviewData = {
       title: e.target.reviewTitle.value,
       text: e.target.reviewText.value,
-      movie: e.target.moviesSelect.value,
+      movie: selectedMovieTitle, // Use selectedMovieTitle here
+      movieId: selectedMovieId,
       email: e.target.email.value,
       rating,
-      firstName: e.target.firstName.value,
-      lastName: e.target.lastName.value,
+      first_name: e.target.firstName.value,
+      last_name: e.target.lastName.value,
     };
 
-    fetch("https://moviesfunctionapp.azurewebsites.net/api/SubmitReview", {
+    fetch("https://brightflixapii.vercel.app/api/v1/SubmitReview", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,10 +83,23 @@ const FormSubmit = () => {
           />
 
           <label htmlFor="moviesSelect">Select a Movie:</label>
-          <select name="moviesSelect" id="moviesSelect" required>
+          <select
+            name="moviesSelect"
+            id="moviesSelect"
+            required
+            onChange={(e) => {
+              setSelectedMovieId(e.target.value);
+              setSelectedMovieTitle(
+                e.target.options[e.target.selectedIndex].text
+              );
+            }}
+          >
+            <option value="" disabled selected>
+              Select a movie
+            </option>
             {data &&
-              data.map((item, key) => (
-                <option key={key} value={item.title}>
+              data.map((item) => (
+                <option key={item.id} value={item.id}>
                   {item.title}
                 </option>
               ))}

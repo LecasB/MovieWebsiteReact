@@ -6,7 +6,7 @@ const LastReviews = ({ id }) => {
   const [data, isLoading, errorMessage] = useFetch(
     id
       ? `https://moviesfunctionapp.azurewebsites.net/api/GetReviews?id=${id}`
-      : "https://moviesfunctionapp.azurewebsites.net/api/GetReviews"
+      : "https://brightflixapii.vercel.app/api/v1/GetReviews"
   );
 
   console.log(data);

@@ -29,7 +29,7 @@ const RelatedMovies = () => {
             />
           ))}
       </div>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <h3>Loading Related Movies 🎞</h3>}
       {errorMessage && <p>Error: {errorMessage}</p>}
     </>
   );
