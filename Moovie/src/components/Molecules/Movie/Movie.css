@@ -17,8 +17,8 @@
 }
 
 .movie-image {
-  height: 30em;
-  width: 25.5em;
+  height: 25em;
+  width: 17.5em;
 }
 
 @media (max-width: 650px) {
