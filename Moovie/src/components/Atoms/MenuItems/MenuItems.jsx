@@ -27,14 +27,20 @@ const MenuItems = () => {
     <>
       {!isMobile ? (
         <ul className="menu-items">
-          <li className="list-item">
-            <Link to="/movies">Movies</Link>
+          <li>
+            <Link className="list-item" to="/movies">
+              Movies
+            </Link>
           </li>
-          <li className="list-item">
-            <Link to="/wishList">WishList</Link>
+          <li>
+            <Link className="list-item" to="/wishList">
+              WishList
+            </Link>
           </li>
-          <li className="list-item">
-            <Link to="/reviews">Reviews</Link>
+          <li>
+            <Link className="list-item" to="/reviews">
+              Reviews
+            </Link>
           </li>
         </ul>
       ) : (

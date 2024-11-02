@@ -1,6 +1,10 @@
 .review-card {
+  position: relative;
   display: flex;
   flex-direction: column;
+  background-color: lightgray;
+  padding: 0px 15px 20px 20px;
+  border: 1px solid gray;
   width: 45%;
 }
 
@@ -20,7 +24,7 @@
 
 .review-author {
   font-style: italic;
-  color: gray;
+  color: rgb(78, 78, 78);
 }
 
 @media (max-width: 850px) {

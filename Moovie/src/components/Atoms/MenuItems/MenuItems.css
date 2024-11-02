@@ -11,8 +11,11 @@
   flex-wrap: wrap;
 }
 
-a {
+.list-item {
   text-decoration: none;
   font-size: 1.5em;
   color: rgb(0, 0, 0);
+  font-weight: 600;
+  -webkit-text-stroke-color: rgb(66, 60, 60);
+  -webkit-text-stroke-width: 1px;
 }
