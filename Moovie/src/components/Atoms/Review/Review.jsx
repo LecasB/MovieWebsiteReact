@@ -40,7 +40,7 @@ const Review = ({
       <h3 className="review-movie">{movie}</h3>
       <p className="review-desc">{text}</p>
       <p className="review-author">{`${firstName} ${lastName} - ${email}`}</p>
-      <button onClick={() => setShowPopup(true)}>Apagar</button>
+      <button onClick={() => setShowPopup(true)}>Delete</button>
       {showPopup && (
         <PopUpDelete
           title={title}
