@@ -15,7 +15,7 @@ const LastReviews = ({ id }) => {
       {isLoading && <h3>Loading: LastReviews</h3>}
       <h2 style={{ padding: "0px 0px 0px 20px" }}>Last Reviews:</h2>
       <div className="reviews">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((item) => (
             <Review
               key={item.id}
@@ -28,7 +28,10 @@ const LastReviews = ({ id }) => {
               rating={item.rating}
               id={item.id}
             />
-          ))}
+          ))
+        ) : (
+          <h1>There is No Reviews</h1>
+        )}
       </div>
     </>
   );
