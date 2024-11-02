@@ -6,6 +6,7 @@
   padding: 0px 15px 20px 20px;
   border: 1px solid gray;
   width: 45%;
+  border-radius: 5px;
 }
 
 .title-rating {
