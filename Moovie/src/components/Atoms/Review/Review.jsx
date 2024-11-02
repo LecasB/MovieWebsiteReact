@@ -1,5 +1,7 @@
-import React from "react";
+// Review.js
+import React, { useState } from "react";
 import "./Review.css";
+import PopUpDelete from "../../Molecules/PopUpDelete/PopUpDelete";
 
 const Review = ({
   id,
@@ -11,23 +13,19 @@ const Review = ({
   lastName,
   rating,
 }) => {
+  const [showPopup, setShowPopup] = useState(false);
+
   const handleDelete = async () => {
     try {
       const response = await fetch(
         `https://brightflixapii.vercel.app/api/v1/DeleteReviewById?id=${id}`,
-        {
-          method: "DELETE",
-        }
+        { method: "DELETE" }
       );
 
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
-
-      const data = await response.json();
-      console.log(data); // Log the response data
-
-      // Call onDelete if provided to remove review from
+      setShowPopup(false);
     } catch (error) {
       console.error("Failed to delete review:", error);
     }
@@ -42,7 +40,15 @@ const Review = ({
       <h3 className="review-movie">{movie}</h3>
       <p className="review-desc">{text}</p>
       <p className="review-author">{`${firstName} ${lastName} - ${email}`}</p>
-      <button onClick={handleDelete}>Apagar</button>
+      <button onClick={() => setShowPopup(true)}>Apagar</button>
+      {showPopup && (
+        <PopUpDelete
+          title={title}
+          name={`${firstName} ${lastName}`}
+          onConfirm={handleDelete}
+          onCancel={() => setShowPopup(false)}
+        />
+      )}
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import useFetch from "../../../hooks/Fetch/useFetch";
 import Review from "../../Atoms/Review/Review";
 import "./LastReviews.css";
@@ -9,19 +10,15 @@ const LastReviews = ({ id }) => {
       : "https://brightflixapii.vercel.app/api/v1/GetReviews"
   );
 
-  console.log(data);
-
   return (
     <>
       {isLoading && <h3>Loading: LastReviews</h3>}
       <h2 style={{ padding: "0px 0px 0px 20px" }}>Last Reviews:</h2>
       <div className="reviews">
-        {data && data.success === false && <h3>There is No Reviews</h3>}
         {data &&
-          data.length > 0 &&
-          data.map((item, key) => (
+          data.map((item) => (
             <Review
-              key={key}
+              key={item.id}
               title={item.title}
               text={item.text}
               movie={item.movie}
