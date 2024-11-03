@@ -3,10 +3,11 @@ import usePost from "../../../hooks/Post/usePost";
 import { useState } from "react";
 import "./FormSubmit.css";
 
-const FormSubmit = () => {
+const FormSubmit = ({ setReload = false }) => {
   const [data, isLoading, fetchErrorMessage] = useFetch(
     "https://moviesfunctionapp.azurewebsites.net/api/GetMovies"
   );
+
   const { submitReview, isSubmitting, errorMessage, isSuccessful } = usePost();
 
   const [rating, setRating] = useState("");
@@ -20,7 +21,7 @@ const FormSubmit = () => {
     }
   };
 
-  const formHandle = (e) => {
+  const formHandle = async (e) => {
     e.preventDefault();
 
     const reviewData = {
@@ -34,7 +35,18 @@ const FormSubmit = () => {
       last_name: e.target.lastName.value,
     };
 
-    submitReview(reviewData);
+    const sucess = await submitReview(reviewData);
+
+    sucess && handleRefresh();
+
+    e.target.reset();
+    setRating("");
+    setSelectedMovieId("");
+    setSelectedMovieTitle("");
+  };
+
+  const handleRefresh = () => {
+    setReload((prev) => !prev);
   };
 
   return (
@@ -70,6 +82,7 @@ const FormSubmit = () => {
           name="moviesSelect"
           id="moviesSelect"
           required
+          value={selectedMovieId}
           onChange={(e) => {
             setSelectedMovieId(e.target.value);
             setSelectedMovieTitle(
@@ -77,7 +90,7 @@ const FormSubmit = () => {
             );
           }}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Select a movie
           </option>
           {data &&

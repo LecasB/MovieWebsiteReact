@@ -3,7 +3,7 @@ import useFetch from "../../../hooks/Fetch/useFetch";
 import Review from "../../Atoms/Review/Review";
 import "./LastReviews.css";
 
-const LastReviews = ({ id }) => {
+const LastReviews = ({ id, reload = false }) => {
   const [refresh, setRefresh] = useState(false);
 
   const [data, isLoading, errorMessage] = useFetch(
@@ -14,8 +14,12 @@ const LastReviews = ({ id }) => {
   );
 
   const handleRefresh = () => {
-    setRefresh((refresh) => !refresh);
+    setRefresh((prev) => !prev);
   };
+
+  useEffect(() => {
+    handleRefresh();
+  }, [reload]);
 
   return (
     <>
@@ -34,13 +38,14 @@ const LastReviews = ({ id }) => {
               lastName={item.last_name}
               rating={item.rating}
               id={item.id}
-              onConfirm={handleRefresh} // Pass the refresh handler here
+              onConfirm={handleRefresh}
             />
           ))
         ) : (
-          <h1>There is No Reviews</h1>
+          <h1>There are No Reviews</h1>
         )}
       </div>
+      {errorMessage && <p>Error fetching reviews: {errorMessage}</p>}
     </>
   );
 };

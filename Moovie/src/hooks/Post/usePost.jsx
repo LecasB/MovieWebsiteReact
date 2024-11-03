@@ -27,9 +27,11 @@ const usePost = () => {
       }
 
       await response.json();
-      setIsSuccessful(true); // Update if submission was successful
+      setIsSuccessful(true);
+      return true; // Indicate success
     } catch (error) {
       setErrorMessage(error.message);
+      return false; // Indicate failure
     } finally {
       setIsSubmitting(false);
     }
