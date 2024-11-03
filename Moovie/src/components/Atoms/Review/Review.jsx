@@ -1,4 +1,3 @@
-// Review.js
 import React, { useState } from "react";
 import "./Review.css";
 import PopUpDelete from "../../Molecules/PopUpDelete/PopUpDelete";
@@ -12,6 +11,7 @@ const Review = ({
   firstName,
   lastName,
   rating,
+  onConfirm,
 }) => {
   const [showPopup, setShowPopup] = useState(false);
 
@@ -26,6 +26,7 @@ const Review = ({
         throw new Error(`Error: ${response.statusText}`);
       }
       setShowPopup(false);
+      onConfirm();
     } catch (error) {
       console.error("Failed to delete review:", error);
     }

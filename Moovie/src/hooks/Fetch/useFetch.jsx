@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-const useFetch = (url) => {
+const useFetch = (url, dependencies = []) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,7 +13,7 @@ const useFetch = (url) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [url]);
+  }, [url, ...dependencies]);
   return [data, isLoading, errorMessage];
 };
 export default useFetch;

@@ -4,11 +4,18 @@ import Review from "../../Atoms/Review/Review";
 import "./LastReviews.css";
 
 const LastReviews = ({ id }) => {
+  const [refresh, setRefresh] = useState(false);
+
   const [data, isLoading, errorMessage] = useFetch(
     id
       ? `https://brightflixapii.vercel.app/api/v1/GetReviewById?id=${id}`
-      : "https://brightflixapii.vercel.app/api/v1/GetReviews"
+      : "https://brightflixapii.vercel.app/api/v1/GetReviews",
+    [refresh]
   );
+
+  const handleRefresh = () => {
+    setRefresh((refresh) => !refresh);
+  };
 
   return (
     <>
@@ -27,6 +34,7 @@ const LastReviews = ({ id }) => {
               lastName={item.last_name}
               rating={item.rating}
               id={item.id}
+              onConfirm={handleRefresh} // Pass the refresh handler here
             />
           ))
         ) : (

@@ -1,4 +1,3 @@
-// PopUpDelete.js
 import React from "react";
 import "./PopUpDelete.css";
 import hahaha from "../../../assets/hahaha.gif";
