@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, useInView } from "framer-motion";
 import "./Review.css";
 import PopUpDelete from "../../Molecules/PopUpDelete/PopUpDelete";
 
@@ -14,6 +15,8 @@ const Review = ({
   onConfirm,
 }) => {
   const [showPopup, setShowPopup] = useState(false);
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { triggerOnce: true, threshold: 0.2 });
 
   const handleDelete = async () => {
     try {
@@ -33,7 +36,13 @@ const Review = ({
   };
 
   return (
-    <div className="review-card">
+    <motion.div
+      ref={ref}
+      className="review-card"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1, ease: "easeIn" }}
+    >
       <div className="title-rating">
         <h2 className="review-title">{title}</h2>
         <p className="review-rating">{rating}</p>
@@ -50,7 +59,7 @@ const Review = ({
           onCancel={() => setShowPopup(false)}
         />
       )}
-    </div>
+    </motion.div>
   );
 };
 
