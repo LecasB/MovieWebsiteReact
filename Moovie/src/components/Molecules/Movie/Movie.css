@@ -19,6 +19,12 @@
 .movie-image {
   height: 25em;
   width: 17.5em;
+  transition: all 0.2s ease-out;
+}
+
+.movie-image:hover {
+  filter: brightness(50%);
+  transition: all 0.3s ease-in;
 }
 
 @media (max-width: 650px) {
