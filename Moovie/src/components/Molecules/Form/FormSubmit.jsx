@@ -1,6 +1,7 @@
+import { useState, useRef } from "react";
 import useFetch from "../../../hooks/Fetch/useFetch";
 import usePost from "../../../hooks/Post/usePost";
-import { useState } from "react";
+import PopUpSubmit from "../PopUpSubmit/PopUpSubmit";
 import "./FormSubmit.css";
 
 const FormSubmit = ({ setReload = false }) => {
@@ -13,6 +14,10 @@ const FormSubmit = ({ setReload = false }) => {
   const [rating, setRating] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState("");
   const [selectedMovieTitle, setSelectedMovieTitle] = useState("");
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [reviewData, setReviewData] = useState(null);
+
+  const formRef = useRef(null);
 
   const handleRatingChange = (e) => {
     const value = e.target.value;
@@ -21,10 +26,10 @@ const FormSubmit = ({ setReload = false }) => {
     }
   };
 
-  const formHandle = async (e) => {
+  const formHandle = (e) => {
     e.preventDefault();
 
-    const reviewData = {
+    const newReviewData = {
       title: e.target.reviewTitle.value,
       text: e.target.reviewText.value,
       movie: selectedMovieTitle,
@@ -35,14 +40,26 @@ const FormSubmit = ({ setReload = false }) => {
       last_name: e.target.lastName.value,
     };
 
-    const sucess = await submitReview(reviewData);
+    setReviewData(newReviewData); // Store the review data
+    setIsPopupVisible(true); // Show the pop-up
+  };
 
-    sucess && handleRefresh();
+  const handleConfirm = async () => {
+    setIsPopupVisible(false);
+    const success = await submitReview(reviewData);
+    success && handleRefresh();
+    resetForm();
+  };
 
-    e.target.reset();
+  const handleCancel = () => {
+    setIsPopupVisible(false); // Close the pop-up without submitting
+  };
+
+  const resetForm = () => {
     setRating("");
     setSelectedMovieId("");
     setSelectedMovieTitle("");
+    formRef.current.reset();
   };
 
   const handleRefresh = () => {
@@ -50,7 +67,7 @@ const FormSubmit = ({ setReload = false }) => {
   };
 
   return (
-    <form onSubmit={formHandle}>
+    <form ref={formRef} onSubmit={formHandle}>
       <div className="form-review">
         <h2>Submit Review</h2>
 
@@ -158,6 +175,10 @@ const FormSubmit = ({ setReload = false }) => {
         {isSuccessful && <p>Review submitted successfully!</p>}
         {fetchErrorMessage && <p>Error fetching movies: {fetchErrorMessage}</p>}
       </div>
+
+      {isPopupVisible && (
+        <PopUpSubmit onConfirm={handleConfirm} onCancel={handleCancel} />
+      )}
     </form>
   );
 };
