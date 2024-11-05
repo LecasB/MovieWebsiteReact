@@ -163,6 +163,7 @@ const FormSubmit = ({ setReload = false }) => {
           id="email"
           name="email"
           placeholder="Enter your email"
+          pattern="^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$"
           required
         />
 

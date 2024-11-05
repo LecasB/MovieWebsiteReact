@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/Fetch/useFetch";
 import "./Details.css";
 import FavoriteButton from "../../Atoms/FavouriteButton/FavouriteButton";
+import { LuClock } from "react-icons/lu";
+import { CiCalendar } from "react-icons/ci";
+import { IoInformationCircleOutline } from "react-icons/io5";
 
 const Details = () => {
   const { id } = useParams();
@@ -24,13 +27,25 @@ const Details = () => {
               <h2>{data.title}</h2>
               <FavoriteButton id={data.id} />
             </div>
-            <p>Description: {data.summary}</p>
-            <p>Year:{data.year}</p>
-            <p>Duration: {data.runtime}</p>
-            <p>Category: {data.genres}</p>
+            <p>
+              <b>Description:</b> {data.summary}
+            </p>
+            <p>
+              <b>Year:</b>
+              {data.year} <CiCalendar />
+            </p>
+            <p>
+              <b>Duration:</b> {data.runtime} min <LuClock />
+            </p>
+            <p>
+              <b>Category:</b> {data.genres} <IoInformationCircleOutline />
+            </p>
+
             <div className="director-actors">
               <div>
-                <p>Director:</p>
+                <p>
+                  <b>Director:</b>
+                </p>
                 <ul>
                   {data.director.map((director, key) => (
                     <li key={key}>{director}</li>
@@ -38,7 +53,9 @@ const Details = () => {
                 </ul>
               </div>
               <div>
-                <p>Actors:</p>
+                <p>
+                  <b>Actors:</b>
+                </p>
                 <ul>
                   {data.actors.map((actor, key) => (
                     <li key={key}>{actor}</li>
