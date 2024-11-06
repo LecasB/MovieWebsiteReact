@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../Molecules/Layout/Layout";
 import Movie from "../Molecules/Movie/Movie";
 import "./WishListPage.css";
+import { Link } from "react-router-dom";
 
 const WishListPage = () => {
   const [sessionData, setSessionData] = useState(
@@ -24,7 +25,18 @@ const WishListPage = () => {
             <Movie key={index} id={movieId} refresh={refresh} />
           ))
         ) : (
-          <h1>No Movies Found</h1>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <h1>No Movies Found</h1>
+            <h3>
+              Add your favourite movies <Link to="/movies">here</Link>
+            </h3>
+          </div>
         )}
       </div>
     </Layout>
