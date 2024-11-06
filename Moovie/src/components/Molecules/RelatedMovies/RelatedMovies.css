@@ -25,4 +25,6 @@
 .seeall {
   font-size: 1.2em;
   text-decoration: underline;
+  color: black;
+  font-weight: bold;
 }
