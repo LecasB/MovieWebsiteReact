@@ -22,6 +22,9 @@ const HeroBanner = () => {
             <Link to={`/movies/${data.movieId}`}>
               <Button text={"See Details"} />
             </Link>
+            <Link to={data.movie} style={{ padding: "10px" }}>
+              <Button text={"Watch Movie"} />
+            </Link>
           </div>
         </div>
       )}

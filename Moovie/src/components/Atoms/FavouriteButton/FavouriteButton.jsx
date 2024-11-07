@@ -25,6 +25,7 @@ const FavoriteButton = ({ id, refresh = null }) => {
 
   return (
     <img
+      style={{ cursor: "pointer" }}
       src={isFavorite ? FullStar : EmptyStar}
       onClick={() => {
         toggleFav();

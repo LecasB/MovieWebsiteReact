@@ -18,7 +18,7 @@ const RelatedMovies = () => {
         </Link>
       </div>
       <div className="relatedMovies">
-        {data &&
+        {data && data.length > 0 ? (
           data.map((movie) => (
             <Movie
               key={movie.id}
@@ -27,7 +27,10 @@ const RelatedMovies = () => {
               title={movie.title}
               genres={movie.genres}
             />
-          ))}
+          ))
+        ) : (
+          <p>There is no Related Movies</p>
+        )}
       </div>
       {isLoading && <h3>Loading Related Movies 🎞</h3>}
       {errorMessage && <p>Error: {errorMessage}</p>}

@@ -37,12 +37,15 @@ const Movie = ({
     >
       <Link to={`/movies/${id}`}>
         <img className="movie-image" src={posterUrl} alt={title} />
+        <div className="movie-overlay">
+          <h3 className="movie-title">{title}</h3>
+          <p>{genres}</p>
+        </div>
       </Link>
       <div className="genre-fav">
-        <p>{genres}</p>
+        <p>{title}</p>
         <FavoriteButton id={id} refresh={refresh} />
       </div>
-      <h3 className="movie-title">{title}</h3>
     </motion.div>
   );
 };
