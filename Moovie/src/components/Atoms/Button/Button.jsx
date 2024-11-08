@@ -1,7 +1,11 @@
 import "./Button.css";
 
-const Button = ({ text }) => {
-  return <button type="button">{text ? text : "Default"}</button>;
+const Button = ({ text, onClick = null, style }) => {
+  return (
+    <button type="button" onClick={onClick} style={style}>
+      {text ? text : "Default"}
+    </button>
+  );
 };
 
 export default Button;
