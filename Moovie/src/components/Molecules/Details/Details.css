@@ -9,6 +9,17 @@
   width: 100%;
 }
 
+.active {
+  text-decoration: underline;
+  background-color: black;
+  color: white;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 20px;
+}
+
 .text-section {
   padding: 20px;
 }
