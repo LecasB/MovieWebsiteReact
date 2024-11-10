@@ -8,6 +8,9 @@
 
 .input-form-review {
   height: 2em;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 @media (max-width: 900px) {
