@@ -4,11 +4,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url("../../../assets/chroma.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: grayscale();
   display: flex;
   flex-direction: column;
   z-index: 1000;
@@ -16,7 +11,7 @@
 
 .X-container {
   position: relative;
-  height: 40%;
+  height: 30%;
 }
 
 .X {
@@ -26,11 +21,11 @@
   height: 70px;
   width: 70px;
   padding: 20px;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 255, 255));
 }
-
 .menu-container {
   padding: 25px 0px 0px;
-  height: 60%;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
@@ -44,4 +39,9 @@
 
 .popup-menu a:hover {
   text-decoration: underline;
+}
+
+.items-style {
+  text-shadow: 1px 1px 0px black, -1px -1px 0px black, 1px -1px 0px black,
+    -1px 1px 0px black;
 }

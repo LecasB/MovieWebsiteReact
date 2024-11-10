@@ -1,17 +1,27 @@
+// Sound.js
 import React, { useRef, useState, useEffect } from "react";
 import { FaPlay, FaPause, FaBackward, FaForward } from "react-icons/fa";
+import tyler from "../../../assets/tyler.jpg";
+import mf from "../../../assets/mfdoom.jpg";
+import don from "../../../assets/dontoliver.jfif";
+import chroma from "../../../assets/chroma.png";
+import "./Sound.css";
 
-const Sound = ({ soundFile }) => {
+const Sound = ({ soundFile, bgFunc }) => {
   const audioRef = useRef(null);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const playAudio = () => {
     if (audioRef.current) {
-      audioRef.current.play().catch((error) => {
-        console.error("Error playing audio:", error);
-      });
-      setIsPlaying(true);
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          if (error.name !== "AbortError") {
+            console.error("Error playing audio:", error);
+          }
+        });
     }
   };
 
@@ -35,11 +45,30 @@ const Sound = ({ soundFile }) => {
   const getCurrentTrackName = () => {
     switch (currentTrackIndex) {
       case 0:
-        return "Noid";
+        return "Awser";
       case 1:
-        return "St. Chroma";
+        return "Like Him";
       case 2:
-        return "Thought I Was Dead";
+        return "KRYPTONITE";
+      case 3:
+        return "Meat Grinder";
+      default:
+        return "";
+    }
+  };
+
+  const getCurrentBackground = () => {
+    switch (currentTrackIndex) {
+      case 0:
+        return tyler;
+      case 1:
+        return chroma;
+      case 2:
+        return don;
+      case 3:
+        return mf;
+      default:
+        return "";
     }
   };
 
@@ -53,23 +82,41 @@ const Sound = ({ soundFile }) => {
         playAudio();
       }
     }
-  }, [currentTrackIndex, isPlaying, soundFile]);
+
+    const background = getCurrentBackground();
+    bgFunc(background);
+  }, [currentTrackIndex, soundFile, bgFunc]);
+
+  useEffect(() => {
+    if (isPlaying) {
+      playAudio();
+    } else if (audioRef.current) {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
 
   return (
     <div>
       <audio ref={audioRef} preload="auto" />
       <div>
-        <button onClick={previousTrack}>
-          <FaBackward />
+        <button style={{ background: "transparent" }} onClick={previousTrack}>
+          <FaBackward className="buttonmusic" />
         </button>
-        <button onClick={isPlaying ? pauseAudio : playAudio}>
-          {isPlaying ? <FaPause /> : <FaPlay />}
+        <button
+          style={{ background: "transparent" }}
+          onClick={isPlaying ? pauseAudio : playAudio}
+        >
+          {isPlaying ? (
+            <FaPause className="buttonmusic" />
+          ) : (
+            <FaPlay className="buttonmusic" />
+          )}
         </button>
-        <button onClick={nextTrack}>
-          <FaForward />
+        <button style={{ background: "transparent" }} onClick={nextTrack}>
+          <FaForward className="buttonmusic" />
         </button>
       </div>
-      <p style={{ color: "white" }}>Now Playing: {getCurrentTrackName()}</p>
+      <p className="ya">Now Playing: {getCurrentTrackName()}</p>
     </div>
   );
 };
