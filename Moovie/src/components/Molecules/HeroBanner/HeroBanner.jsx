@@ -43,10 +43,7 @@ const HeroBanner = () => {
               text={"Trailer"}
               onClick={() => handlePopup(data.trailer)}
             />
-            <Button
-              text={"Watch Movie"}
-              onClick={() => handlePopup(data.movie)}
-            />
+            <Button text={"Watch"} onClick={() => handlePopup(data.movie)} />
           </div>
         </div>
       )}
