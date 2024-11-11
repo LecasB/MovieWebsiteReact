@@ -10,13 +10,16 @@ const RelatedMovies = () => {
   const [data, isLoading, errorMessage] = useFetch(url);
 
   // Get the genre of the first movie if available
-  const category = data && data.length > 0 ? data[0].genres : "general";
+  const category = data && data.length > 0 && data[0].genres;
 
   return (
     <>
       <div className="title-desc">
         <h2>Related Movies</h2>
-        <Link className="seeall" to={`/movies?category=${category}`}>
+        <Link
+          className="seeall"
+          to={category ? `/movies?category=${category}` : `/movies`}
+        >
           See All
         </Link>
       </div>
