@@ -8,12 +8,15 @@ const RelatedMovies = () => {
   const { id } = useParams();
   const url = `https://moviesfunctionapp.azurewebsites.net/api/GetRelated?id=${id}`;
   const [data, isLoading, errorMessage] = useFetch(url);
-  console.log("Data:", data);
+
+  // Get the genre of the first movie if available
+  const category = data && data.length > 0 ? data[0].genres : "general";
+
   return (
     <>
       <div className="title-desc">
         <h2>Related Movies</h2>
-        <Link className="seeall" to="/movies">
+        <Link className="seeall" to={`/movies?category=${category}`}>
           See All
         </Link>
       </div>
@@ -29,7 +32,7 @@ const RelatedMovies = () => {
             />
           ))
         ) : (
-          <p>There is no Related Movies</p>
+          <p>There are no Related Movies</p>
         )}
       </div>
       {isLoading && <h3>Loading Related Movies 🎞</h3>}

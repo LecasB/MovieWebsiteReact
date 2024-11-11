@@ -1,14 +1,23 @@
-// Movies.js
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import useFetch from "../../../hooks/Fetch/useFetch";
 import Movie from "../Movie/Movie";
 import "./Movies.css";
 
 const Movies = ({ url }) => {
-  const [data, isLoading, errorMessage] = useFetch(
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
+
+  // Format the category for the API request
+  const formattedCategory = category ? `[%22${category}%22]` : "";
+
+  const apiUrl =
     url ||
-      "https://moviesfunctionapp.azurewebsites.net/api/GetMovies?sortBy=relevance"
-  );
+    `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?sortBy=relevance${
+      formattedCategory ? `&category=${formattedCategory}` : ""
+    }`;
+
+  const [data, isLoading, errorMessage] = useFetch(apiUrl);
 
   if (errorMessage) return <div>Error: {errorMessage}</div>;
 
@@ -27,7 +36,7 @@ const Movies = ({ url }) => {
             />
           ))
         ) : (
-          <h3>There is No Movies in this category</h3>
+          <h3>There are no movies in this category</h3>
         )}
       </div>
     </>
