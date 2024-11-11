@@ -8,7 +8,6 @@ const Movies = ({ url }) => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category");
 
-  // Format the category for the API request
   const formattedCategory = category ? `[%22${category}%22]` : "";
 
   const apiUrl =

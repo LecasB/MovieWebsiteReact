@@ -5,21 +5,21 @@ import Movies from "../../Molecules/Movies/Movies";
 import "./APIFilter.css";
 
 const APIFilter = () => {
-  const [selectedSort, setSelectedSort] = useState("relevance"); // Default sort option
+  const [selectedSort, setSelectedSort] = useState("relevance");
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [apiLink, setApiLink] = useState("");
 
   const handleSortChange = (event) => {
-    setSelectedSort(event.target.value); // Update the selected sort option
+    setSelectedSort(event.target.value);
   };
 
   const handleGenreChange = (event) => {
     const genre = event.target.value;
     setSelectedGenres((prev) => {
       if (prev.includes(genre)) {
-        return prev.filter((g) => g !== genre); // Remove genre if already selected
+        return prev.filter((g) => g !== genre);
       } else {
-        return [...prev, genre]; // Add genre if not selected
+        return [...prev, genre];
       }
     });
   };

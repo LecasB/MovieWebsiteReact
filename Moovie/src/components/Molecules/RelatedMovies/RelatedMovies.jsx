@@ -9,7 +9,6 @@ const RelatedMovies = () => {
   const url = `https://moviesfunctionapp.azurewebsites.net/api/GetRelated?id=${id}`;
   const [data, isLoading, errorMessage] = useFetch(url);
 
-  // Get the genre of the first movie if available
   const category = data && data.length > 0 && data[0].genres;
 
   return (

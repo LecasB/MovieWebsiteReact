@@ -28,10 +28,10 @@ const usePost = () => {
 
       await response.json();
       setIsSuccessful(true);
-      return true; // Indicate success
+      return true;
     } catch (error) {
       setErrorMessage(error.message);
-      return false; // Indicate failure
+      return false;
     } finally {
       setIsSubmitting(false);
     }

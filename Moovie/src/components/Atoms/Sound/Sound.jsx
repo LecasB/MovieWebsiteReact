@@ -1,4 +1,3 @@
-// Sound.js
 import React, { useRef, useState, useEffect } from "react";
 import { FaPlay, FaPause, FaBackward, FaForward } from "react-icons/fa";
 import tyler from "../../../assets/tyler.jpg";

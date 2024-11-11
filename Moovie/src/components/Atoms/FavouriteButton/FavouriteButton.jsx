@@ -1,4 +1,3 @@
-// FavoriteButton.js
 import React, { useState, useEffect } from "react";
 import EmptyStar from "../../../assets/empty.png";
 import FullStar from "../../../assets/full.png";

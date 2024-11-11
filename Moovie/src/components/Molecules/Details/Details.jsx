@@ -9,7 +9,7 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 const Details = () => {
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get("tab") || "details"; // default to "details"
+  const activeTab = searchParams.get("tab") || "details";
 
   const url = `https://moviesfunctionapp.azurewebsites.net/api/GetMovies?id=${id}`;
   const [data, isLoading, errorMessage] = useFetch(url);

@@ -54,7 +54,7 @@ const FormSubmit = ({ setReload = false }) => {
   };
 
   const handleCancel = () => {
-    setIsPopupVisible(false); // Close the pop-up without submitting
+    setIsPopupVisible(false);
   };
 
   const resetForm = () => {

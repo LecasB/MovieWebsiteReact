@@ -1,6 +1,6 @@
 import React from "react";
 import "./PopUpEmbed.css";
-import AppLogo from "../../Atoms/AppLogo/AppLogo"; // Import your AppLogo component
+import AppLogo from "../../Atoms/AppLogo/AppLogo";
 
 const PopUpEmbed = ({ videoUrl, onClose }) => {
   return (
