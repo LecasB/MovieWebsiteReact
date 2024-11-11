@@ -88,6 +88,7 @@ const FormSubmit = ({ setReload = false }) => {
 
             <label htmlFor="reviewText">Review:</label>
             <textarea
+              className="input-form-textarea"
               rows={8}
               id="reviewText"
               name="reviewText"

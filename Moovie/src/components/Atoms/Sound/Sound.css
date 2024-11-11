@@ -5,11 +5,11 @@
 }
 
 .buttonmusic {
-  font-size: 24px; /* Adjust as needed */
-  color: #fff; /* Main icon color */
-  transition: color 0.3s ease; /* Smooth color transition */
+  font-size: 24px;
+  color: #fff;
+  transition: color 0.3s ease;
 }
 
 .buttonmusic:hover {
-  color: #f39c12; /* Color change on hover */
+  color: #f39c12;
 }

@@ -24,7 +24,7 @@ const HeroBanner = () => {
     <>
       {isLoading && (
         <>
-          <h3>Loading: HeroBanner</h3> <Loader />
+          <h3>Loading: HeroBanner</h3> <Loader text={"Home Page"} />
         </>
       )}
       {data && (
