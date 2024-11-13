@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import useFetch from "../../../hooks/Fetch/useFetch";
 import "./Details.css";
 import FavoriteButton from "../../Atoms/FavouriteButton/FavouriteButton";
@@ -7,6 +7,7 @@ import { CiCalendar } from "react-icons/ci";
 import { IoInformationCircleOutline } from "react-icons/io5";
 
 const Details = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get("tab") || "details";
@@ -21,7 +22,7 @@ const Details = () => {
   return (
     <>
       {isLoading && <p>Loading...</p>}
-      {errorMessage && <p>Error: {errorMessage}</p>}
+      {errorMessage && navigate("/error")}
 
       {data && (
         <div className="details">
