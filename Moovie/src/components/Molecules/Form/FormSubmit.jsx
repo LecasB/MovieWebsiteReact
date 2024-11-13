@@ -20,6 +20,8 @@ const FormSubmit = ({ setReload = false }) => {
 
   const formRef = useRef(null);
 
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   const handleRatingChange = (e) => {
     const value = e.target.value;
     if (value === "" || (value >= 1 && value <= 5)) {
@@ -29,6 +31,12 @@ const FormSubmit = ({ setReload = false }) => {
 
   const formHandle = (e) => {
     e.preventDefault();
+
+    const email = e.target.email.value;
+    if (!emailRegex.test(email)) {
+      alert("Email Invalido!");
+      return;
+    }
 
     const newReviewData = {
       title: e.target.reviewTitle.value,
@@ -168,7 +176,6 @@ const FormSubmit = ({ setReload = false }) => {
               id="email"
               name="email"
               placeholder="Enter your email"
-              pattern="^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$"
               required
             />
 
