@@ -1,15 +1,16 @@
 import useFetch from "../../../hooks/Fetch/useFetch";
 import "./Genres.css";
 import { IoFilterOutline } from "react-icons/io5";
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
 
 const Genres = ({ onChange }) => {
   const [data, isLoading, errorMessage] = useFetch(
     "https://moviesfunctionapp.azurewebsites.net/api/GetGenres"
   );
 
-  const [isMobile, setIsMobile] = useState(false);
   const [showFilter, setShowFilter] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,6 +22,7 @@ const Genres = ({ onChange }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   return (
     <>
       {isMobile && (
@@ -32,8 +34,8 @@ const Genres = ({ onChange }) => {
         </div>
       )}
       {isLoading && <h3>Loading Genres 🎭</h3>}
-      {data && showFilter && (
-        <div className="genres">
+      {data && (
+        <div className={`${showFilter ? "genres" : "hidden"}`}>
           <h2>Category</h2>
           <div className="genresOp">
             {data.map((genre, index) => (
